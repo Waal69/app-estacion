@@ -6,7 +6,7 @@
     <title><?php echo $title ?? APP_NAME; ?></title>
     <link rel="stylesheet" href="public/css/styles.css">
 </head>
-<body>
+<body class="<?php echo strpos($_SERVER['REQUEST_URI'], '/map') !== false ? 'map-page' : ''; ?>">
     <header>
         <nav>
             <h1><a href="/app-estacion/"><?php echo APP_NAME; ?></a></h1>
@@ -21,6 +21,7 @@
                 <?php else: ?>
                     <a href="/app-estacion/login" class="btn-login">Iniciar Sesión</a>
                 <?php endif; ?>
+                <a href="/app-estacion/admin-login" class="btn-admin">Admin</a>
             </div>
         </nav>
     </header>
