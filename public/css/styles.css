@@ -128,3 +128,45 @@ footer {
     font-size: 1.2rem;
     color: #666;
 }
+
+.graficos-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.grafico-item {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.grafico-item h3 {
+    margin-bottom: 1rem;
+    color: #333;
+    font-size: 1.1rem;
+}
+
+.grafico-item canvas {
+    max-height: 200px;
+    margin-bottom: 1rem;
+}
+
+.valor-actual {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #667eea;
+    margin-top: 0.5rem;
+}
+
+.info-card p {
+    margin: 0.5rem 0;
+}
+
+#ultima-actualizacion {
+    color: #666;
+    font-size: 0.9rem;
+}
