@@ -10,6 +10,18 @@
     <header>
         <nav>
             <h1><a href="/app-estacion/"><?php echo APP_NAME; ?></a></h1>
+            <div class="nav-links">
+                <?php 
+                require_once 'config/Auth.php';
+                if (Auth::estaLogueado()): 
+                    $usuario = Auth::getUsuario();
+                ?>
+                    <span>Hola, <?php echo htmlspecialchars($usuario['nombres']); ?></span>
+                    <a href="/app-estacion/logout" class="btn-logout">Cerrar Sesión</a>
+                <?php else: ?>
+                    <a href="/app-estacion/login" class="btn-login">Iniciar Sesión</a>
+                <?php endif; ?>
+            </div>
         </nav>
     </header>
     

@@ -1,5 +1,6 @@
 <?php
 require_once 'config/View.php';
+require_once 'config/Auth.php';
 require_once 'models/EstacionModel.php';
 
 class EstacionController {
@@ -13,10 +14,17 @@ class EstacionController {
     public function panel() {
         $view = new View('panel');
         $view->assign('title', 'Panel de Estaciones - ' . APP_NAME);
+        $view->assign('usuario_logueado', Auth::estaLogueado());
         $view->render();
     }
     
     public function detalle($chipid = null) {
+        // Verificar que el usuario esté logueado
+        if (!Auth::estaLogueado()) {
+            header('Location: /app-estacion/login?chipid=' . urlencode($chipid));
+            exit;
+        }
+        
         if (!$chipid) {
             header('Location: /app-estacion/panel');
             exit;
@@ -29,6 +37,7 @@ class EstacionController {
         $view->assign('title', 'Detalle de Estación - ' . APP_NAME);
         $view->assign('estacion', $estacion);
         $view->assign('chipid', $chipid);
+        $view->assign('usuario', Auth::getUsuario());
         $view->render();
     }
 }
